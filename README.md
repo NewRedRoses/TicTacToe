@@ -5,8 +5,8 @@ A simple Tic-Tac-Toe application made applying the contents from the full-stack 
 # To-do list 
 Below is a personal checklist derived from the instructions for the project.
 - [x] Setup initial HTML,CSS and Js files.  
-- [ ]  Create the `GameBoard` object (*use a module*).
-  - [ ] Store `gameboard` as an array within the `GameBoard` object.
+- [x]  Create the `GameBoard` object (*use a module*).
+  - [x] Store `gameboard` as an array within the `GameBoard` object.
 - [ ] Create objects for the two players (*use a factory*). 
 - [ ] Setup the basic layout of the elements in the HTML file. 
 - [ ] Create a JS function that will display the content of the "gameboard" onto the webpage. 
