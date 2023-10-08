@@ -21,3 +21,6 @@ Below is a personal checklist derived from the instructions for the project.
 - [ ] **Optional**: Basically add "AI" functionality. 
   - [ ] Add functionality to make the CPU make a random but legal move. 
   - [ ] Make the CPU player smarter (or unbeatable) by using [the minimax algorithm](https://en.wikipedia.org/wiki/Minimax). Feel free to google. 
+
+# Credits 
+I plan on using [Ankit Tilwani's TIC TAC TOE - UI Kit](https://www.figma.com/community/file/1198263701033771263/tic-tac-toe-ui-kit) for the UI among other things. 
