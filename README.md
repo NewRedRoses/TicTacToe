@@ -7,7 +7,7 @@ Below is a personal checklist derived from the instructions for the project.
 - [x] Setup initial HTML,CSS and Js files.  
 - [x]  Create the `GameBoard` object (*use a module*).
   - [x] Store `gameboard` as an array within the `GameBoard` object.
-- [ ] Create objects for the two players (*use a factory*). 
+- [x] Create objects for the two players (*use a factory*). 
 - [ ] Setup the basic layout of the elements in the HTML file. 
 - [ ] Create a JS function that will display the content of the "gameboard" onto the webpage. 
   - Tip: At this stage you might want to manually populate the array with X's and O's
