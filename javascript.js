@@ -1,8 +1,15 @@
 const GameBoard = (() => {
-  let gameboard = [];
-  return { gameboard };
+  let values = ["O", "X", "O", "X", "O", "X", "X", "O", "X"];
+  const display = function () {
+    values.forEach((item, index) => {
+      const cell = document.getElementById(`c${index}`);
+      cell.innerHTML = item;
+    });
+  };
+  return { display };
 })();
 
+GameBoard.display();
 function playerFactory(name, marker) {
   const getMarker = () => marker;
   const getName = () => name;
