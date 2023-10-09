@@ -7,12 +7,12 @@ body {
   flex-direction: column;
 }
 .header {
-  background-color: red;
+  background-color: cornsilk;
   flex: 1;
   text-align: center;
 }
 .gameBoard-container {
-  background-color: green;
+  background-color: cornflowerblue;
   flex: 10;
 }
 .gameBoard {
@@ -28,8 +28,13 @@ body {
 }
 .cell{
   display: flex;
+  position: relative;
+  background-color: aliceblue;
   border: 1px solid black;
   justify-content: center;
   align-items: center;
   height: 100px;
+}
+.cell:active{
+  top: 5px;;
 }
