@@ -12,8 +12,9 @@ Below is a personal checklist derived from the instructions for the project.
 - [x] Create a JS function that will display the content of the "gameboard" onto the webpage. 
   - Tip: At this stage you might want to manually populate the array with X's and O's
 - [x] Add basic styling 
-- [ ] Create function that allows players to make selections for specific spots on the board by clicking on it. 
-  - [ ] Add logic so no two players can pick the same spot. 
+- [x] Create function that allows players to make selections for specific spots on the board by clicking on it. 
+- [ ] Create function that changes the cells based on the selection
+- [ ] Add logic so no two players can pick the same spot. 
 - [ ] Create logic that determine if the game is over. The game is over when there are 3 checks of the same value or if there's a tie.
 - [ ] Add additional improvements, like:
   - [ ] Allow players to put in their name.
