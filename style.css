@@ -26,3 +26,10 @@ body {
   grid-template-columns: 100px 100px 100px;
   gap: 10px;
 }
+.cell{
+  display: flex;
+  border: 1px solid black;
+  justify-content: center;
+  align-items: center;
+  height: 100px;
+}
