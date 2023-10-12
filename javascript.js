@@ -1,5 +1,6 @@
 const GameBoard = (() => {
-  let values = ["O", "X", "O", "X", "O", "X", "X", "O", "X"];
+  // let values = ["O", "X", "O", "X", "O", "X", "X", "O", "X"];
+  let values = ["", "", "", "", "", "", "", "", ""];
   const display = function () {
     values.forEach((item, index) => {
       const cell = document.getElementById(`c${index}`);
@@ -12,21 +13,31 @@ const GameBoard = (() => {
 GameBoard.display();
 function playerFactory(name, marker) {
   const getMarker = () => marker;
-  const getName = () => name;
-  const selectCell = function () {
-    const element = document.querySelector(".grid-container"); 
+  let cell;
+  const getCellId = function (callback) {
+    const element = document.querySelector(".grid-container");
+    let selectedCell;
     element.addEventListener("click", (event) => {
       const clickedItemClass = event.target.getAttribute("class");
       // Ingnore whitespace between cells
       if (clickedItemClass === "cell") {
-        console.log(event.target.getAttribute("id"));
+        cell = event.target.getAttribute("id");
+        callback(cell);
       }
     });
   };
-  return { getMarker, getName, selectCell};
+  const setMarkerOnClick = function () {
+    // Need to use this thing since im using a callback
+    getCellId(function (id) {
+      cell = id;
+      const container = document.getElementById(cell);
+      container.innerHTML = marker;
+    });
+  };
+  return { setMarkerOnClick };
 }
 // Temp objects
 const player1 = playerFactory("John", "X");
 const player2 = playerFactory("Luke", "O");
 
-console.log(player1.selectCell() );
+player1.setMarkerOnClick();
