@@ -3,11 +3,11 @@ const GameBoard = (() => {
   let values = ["", "", "", "", "", "", "", "", ""];
   const display = function () {
     values.forEach((item, index) => {
-      const cell = document.getElementById(`c${index}`);
+      const cell = document.getElementById(`${index}`);
       cell.innerHTML = item;
     });
   };
-  return { display };
+  return { display,values};
 })();
 
 GameBoard.display();
@@ -30,8 +30,8 @@ function playerFactory(name, marker) {
     // Need to use this thing since im using a callback
     getCellId(function (id) {
       cell = id;
-      const container = document.getElementById(cell);
-      container.innerHTML = marker;
+      GameBoard.values[id] = marker;
+      GameBoard.display();
     });
   };
   return { setMarkerOnClick };
@@ -40,4 +40,4 @@ function playerFactory(name, marker) {
 const player1 = playerFactory("John", "X");
 const player2 = playerFactory("Luke", "O");
 
-player1.setMarkerOnClick();
+player2.setMarkerOnClick();
