@@ -1,5 +1,4 @@
 const GameBoard = (() => {
-  // let values = ["O", "X", "O", "X", "O", "X", "X", "O", "X"];
   let values = ["", "", "", "", "", "", "", "", ""];
   let turnCount = 0;
   let cellId;
@@ -15,7 +14,10 @@ const GameBoard = (() => {
     const getMarker = () => marker;
     const getName = () => name;
     const markOnClick = () => {
-      if (checkIfValidSelection()) values[cellId] = getMarker();
+      if (checkIfValidSelection()) {
+        values[cellId] = getMarker();
+        turnCount++;
+      }
     };
 
     return { getName, getMarker, markOnClick };
@@ -27,48 +29,48 @@ const GameBoard = (() => {
       cell.innerHTML = item;
     });
   };
-  const checkIfValidSelection = (id) => {
-    console.log("clicked id: ", values[id]);
-    if (values[id] != "X" || values[id] != "O") return true;
+  const checkIfValidSelection = () => {
+    if (values[cellId] === "") return true;
     else return false;
   };
 
+  const informationDisplay = (msg) => {
+    const gameStatus = document.querySelector(".game-status");
+    gameStatus.innerHTML = msg;
+  };
+
   const getIdOnClick = function (event) {
-    // Need to use this thing since I'm using a callback
     const clickedItemClass = event.target.getAttribute("class");
     if (clickedItemClass === "cell") {
-      // console.log(event.target);
       cellId = event.target.getAttribute("id");
-      console.log(values);
       checkRound();
     }
   };
-  const resetListener = () => {
-    const element = document.querySelector(".grid-container");
-    element.removeEventListener("click", (event) =>
-      getIdOnClick(event, player)
-    );
-  };
+
+  informationDisplay(`Click To Start the Match`);
   const checkRound = () => {
-    // console.log(turnCount);
-    if (turnCount % 2 == 0) {
+    // // console.log(turnCount);
+    if (turnCount == 9) {
+      gameOver();
+    } else if (turnCount % 2 == 0) {
+      informationDisplay(`${player2.getName()}'s turn`);
       player1.markOnClick();
     } else {
+      informationDisplay(`${player1.getName()}'s turn`);
       player2.markOnClick();
     }
-    turnCount++;
+    console.log(turnCount);
     display();
   };
-  const start = () => {
-    display();
-  };
-  return {
-    start,
-    checkRound,
-    display,
-    values,
-    checkIfValidSelection,
-  };
-})();
 
-GameBoard.start();
+  const gameOver = () => {
+    const element = document.querySelector(".grid-container");
+    element.removeEventListener("click", (event) => getIdOnClick(event));
+
+    const background = document.querySelector(".gameBoard-container");
+    background.style.backgroundColor = "red";
+
+    informationDisplay("Game Over");
+  };
+  return {};
+})();
