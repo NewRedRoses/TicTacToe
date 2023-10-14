@@ -16,6 +16,7 @@ const GameBoard = (() => {
     const markOnClick = () => {
       if (checkIfValidSelection()) {
         values[cellId] = getMarker();
+        determineWinner();
         turnCount++;
       }
     };
@@ -30,8 +31,8 @@ const GameBoard = (() => {
     });
   };
   const checkIfValidSelection = () => {
-    if (values[cellId] === "") return true;
-    else return false;
+    if (values[cellId] !== "" || turnCount == 9) return false;
+    else return true;
   };
 
   const informationDisplay = (msg) => {
@@ -47,10 +48,11 @@ const GameBoard = (() => {
     }
   };
 
-  informationDisplay(`Click To Start the Match`);
+  informationDisplay(`Make Your Selection To Start the Match`);
   const checkRound = () => {
     // // console.log(turnCount);
-    if (turnCount == 9) {
+    if (turnCount == 8) {
+      player1.markOnClick();
       gameOver();
     } else if (turnCount % 2 == 0) {
       informationDisplay(`${player2.getName()}'s turn`);
@@ -62,15 +64,76 @@ const GameBoard = (() => {
     console.log(turnCount);
     display();
   };
+  const determineWinner = () => {
+    /* 
+    The game will determine a winner based on two conditions: 
+    either 1 wins the game or there is a tie. 
 
+    for somebody to win, they need to have at least 3 characters
+    that are identical in either a diagonal order, horizontal or in vertical order.
+  */
+    // Vertical
+    if (values[0] == values[3] && values[0] == values[6] && values[0] !== "") {
+      console.log("win 0,3,6");
+      gameOver();
+    } else if (
+      values[1] == values[4] &&
+      values[1] == values[7] &&
+      values[1] !== ""
+    ) {
+      console.log("win 1,4,7");
+      gameOver();
+    } else if (
+      values[2] == values[5] &&
+      values[2] == values[8] &&
+      values[2] !== ""
+    ) {
+      console.log("win 2,5,8");
+      gameOver();
+    }
+
+    // Horizontal
+    if (values[0] == values[1] && values[0] == values[2] && values[0] !== "") {
+      console.log("win 0,1,2");
+      gameOver();
+    } else if (
+      values[3] == values[4] &&
+      values[3] == values[5] &&
+      values[3] !== ""
+    ) {
+      console.log("win 3,4,5");
+      gameOver();
+    } else if (
+      values[6] == values[7] &&
+      values[6] == values[8] &&
+      values[6] !== ""
+    ) {
+      console.log("win 6,7,8");
+      gameOver();
+    }
+
+    //Diagonal
+    if (values[0] == values[4] && values[0] == values[8] && values[0] !== "") {
+      console.log("win diag 0,4,8");
+      gameOver();
+    } else if (
+      values[2] == values[4] &&
+      values[2] == values[6] &&
+      values[2] !== ""
+    ) {
+      console.log("win diag 2,4,6");
+      gameOver();
+    }
+  };
   const gameOver = () => {
-    const element = document.querySelector(".grid-container");
-    element.removeEventListener("click", (event) => getIdOnClick(event));
-
+    // Aesthetic changes
+    informationDisplay("Game Over");
     const background = document.querySelector(".gameBoard-container");
     background.style.backgroundColor = "red";
 
-    informationDisplay("Game Over");
+    // remove listener
+    const element = document.querySelector(".grid-container");
+    element.removeEventListener("click", (event) => getIdOnClick(event));
   };
   return {};
 })();
