@@ -16,7 +16,7 @@ Below is a personal checklist derived from the instructions for the project.
 - [x] Create function that changes the cells based on the selection
 - [x] Add logic so no two players can pick the same spot. 
 - [x] Create logic that determine if the game is over.
-- [ ] The game is over when there are 3 checks of the same value or if there's a tie.
+- [x] The game is over when there are 3 checks of the same value or if there's a tie.
 - [ ] Add additional improvements, like:
   - [ ] Allow players to put in their name.
   - [ ] Include a button to start/restart the game.
