@@ -3,7 +3,7 @@ body {
 }
 @font-face {
   font-family: Rubik;
-  src: url(../fonts/rubik-variablefont_wght-webfont.woff);
+  src: url(fonts\rubik-variablefont_wght-webfont.woff);
 }
 * {
   font-family: Rubik;
