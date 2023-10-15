@@ -2,7 +2,7 @@ const GameBoard = (() => {
   let values = ["", "", "", "", "", "", "", "", ""];
   let turnCount = 0;
   let cellId;
-
+  let gameIsFinished = false;
   const player1 = playerFactory("John", "X");
   const player2 = playerFactory("Luke", "O");
 
@@ -15,9 +15,12 @@ const GameBoard = (() => {
     const getName = () => name;
     const markOnClick = () => {
       if (checkIfValidSelection()) {
-        values[cellId] = getMarker();
         determineWinner();
+        if (gameIsFinished) return;
+        values[cellId] = getMarker();
         turnCount++;
+        console.log(turnCount);
+        determineWinner();
       }
     };
 
@@ -31,7 +34,7 @@ const GameBoard = (() => {
     });
   };
   const checkIfValidSelection = () => {
-    if (values[cellId] !== "" || turnCount == 9) return false;
+    if (values[cellId] !== "" || gameIsFinished) return false;
     else return true;
   };
 
@@ -51,8 +54,8 @@ const GameBoard = (() => {
   informationDisplay(`Make Your Selection To Start the Match`);
   const checkRound = () => {
     // // console.log(turnCount);
-    if (turnCount == 8) {
-      player1.markOnClick();
+    if (turnCount == 9) {
+      // player1.markOnClick();
       gameOver();
     } else if (turnCount % 2 == 0) {
       informationDisplay(`${player2.getName()}'s turn`);
@@ -61,7 +64,7 @@ const GameBoard = (() => {
       informationDisplay(`${player1.getName()}'s turn`);
       player2.markOnClick();
     }
-    console.log(turnCount);
+    // console.log(turnCount);
     display();
   };
   const determineWinner = () => {
@@ -126,14 +129,14 @@ const GameBoard = (() => {
     }
   };
   const gameOver = () => {
-    // Aesthetic changes
-    informationDisplay("Game Over");
-    const background = document.querySelector(".gameBoard-container");
-    background.style.backgroundColor = "red";
-
     // remove listener
     const element = document.querySelector(".grid-container");
     element.removeEventListener("click", (event) => getIdOnClick(event));
+    gameIsFinished = true;
+    // Aesthetic changes
+    informationDisplay("Game Over");
+    const background = document.querySelector(".gameBoard-container");
+    background.style.backgroundColor = "#FF827E";
   };
   return {};
 })();
