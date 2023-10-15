@@ -16,10 +16,9 @@ const GameBoard = (() => {
     const markOnClick = () => {
       if (checkIfValidSelection()) {
         determineWinner();
-        if (gameIsFinished) return;
+        // if (gameIsFinished) return;
         values[cellId] = getMarker();
         turnCount++;
-        console.log(turnCount);
         determineWinner();
       }
     };
@@ -53,9 +52,8 @@ const GameBoard = (() => {
 
   informationDisplay(`Make Your Selection To Start the Match`);
   const checkRound = () => {
-    // // console.log(turnCount);
-    if (turnCount == 9) {
-      // player1.markOnClick();
+    if (turnCount == 8) {
+      player1.markOnClick();
       gameOver();
     } else if (turnCount % 2 == 0) {
       informationDisplay(`${player2.getName()}'s turn`);
