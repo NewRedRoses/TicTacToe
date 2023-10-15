@@ -1,5 +1,11 @@
 body {
   margin: 0;
+  --green-color: #00c096;
+  --white-color: #fff;
+  --blue-color: #46a3ff;
+  --red-color: #ff827e;
+  --black-color: #0c1017;
+  --yellow-color: #ffb048;
 }
 @font-face {
   font-family: Rubik;
@@ -14,7 +20,7 @@ body {
   flex-direction: column;
 }
 .header {
-  background-color: cornsilk;
+  background-color: var(--white-color);
   flex: 1;
   text-align: center;
   font-weight: 700;
@@ -23,7 +29,7 @@ body {
   justify-content: center;
 }
 .gameBoard-container {
-  background-color: cornflowerblue;
+  background-color: var(--blue-color);
   flex: 10;
 }
 .gameBoard {
@@ -44,7 +50,7 @@ body {
 .cell {
   display: flex;
   position: relative;
-  background-color: aliceblue;
+  background-color: var(--white-color);
   /* border: 1px solid black; */
   justify-content: center;
   align-items: center;

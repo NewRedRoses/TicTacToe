@@ -3,6 +3,11 @@ const GameBoard = (() => {
   let turnCount = 0;
   let cellId;
   let gameIsFinished = false;
+  const cssColorVariable = {
+    red: "var(--red-color)",
+    yellow: "var(--yellow-color)",
+  };
+
   const player1 = playerFactory("John", "X");
   const player2 = playerFactory("Luke", "O");
 
@@ -16,13 +21,11 @@ const GameBoard = (() => {
     const markOnClick = () => {
       if (checkIfValidSelection()) {
         determineWinner();
-        // if (gameIsFinished) return;
         values[cellId] = getMarker();
         turnCount++;
         determineWinner();
       }
     };
-
     return { getName, getMarker, markOnClick };
   }
 
@@ -53,8 +56,10 @@ const GameBoard = (() => {
   informationDisplay(`Make Your Selection To Start the Match`);
   const checkRound = () => {
     if (turnCount == 8) {
+      // if its a tie
       player1.markOnClick();
-      gameOver();
+      informationDisplay("Tie!");
+      gameOver("Tie!", cssColorVariable.yellow);
     } else if (turnCount % 2 == 0) {
       informationDisplay(`${player2.getName()}'s turn`);
       player1.markOnClick();
@@ -76,65 +81,73 @@ const GameBoard = (() => {
     // Vertical
     if (values[0] == values[3] && values[0] == values[6] && values[0] !== "") {
       console.log("win 0,3,6");
-      gameOver();
+      gameOver("Game Over", cssColorVariable.red);
     } else if (
       values[1] == values[4] &&
       values[1] == values[7] &&
       values[1] !== ""
     ) {
       console.log("win 1,4,7");
-      gameOver();
+      gameOver("Game Over", cssColorVariable.red);
     } else if (
       values[2] == values[5] &&
       values[2] == values[8] &&
       values[2] !== ""
     ) {
       console.log("win 2,5,8");
-      gameOver();
+      gameOver("Game Over", cssColorVariable.red);
     }
 
     // Horizontal
     if (values[0] == values[1] && values[0] == values[2] && values[0] !== "") {
       console.log("win 0,1,2");
-      gameOver();
+      gameOver("Game Over", cssColorVariable.red);
     } else if (
       values[3] == values[4] &&
       values[3] == values[5] &&
       values[3] !== ""
     ) {
       console.log("win 3,4,5");
-      gameOver();
+      gameOver("Game Over", cssColorVariable.red);
     } else if (
       values[6] == values[7] &&
       values[6] == values[8] &&
       values[6] !== ""
     ) {
       console.log("win 6,7,8");
-      gameOver();
+      gameOver("Game Over", cssColorVariable.red);
     }
 
     //Diagonal
     if (values[0] == values[4] && values[0] == values[8] && values[0] !== "") {
       console.log("win diag 0,4,8");
-      gameOver();
+      gameOver("Game Over", cssColorVariable.red);
     } else if (
       values[2] == values[4] &&
       values[2] == values[6] &&
       values[2] !== ""
     ) {
       console.log("win diag 2,4,6");
-      gameOver();
+      gameOver("Game Over", cssColorVariable.red);
     }
   };
-  const gameOver = () => {
-    // remove listener
+
+  const removeListener = () => {
     const element = document.querySelector(".grid-container");
     element.removeEventListener("click", (event) => getIdOnClick(event));
-    gameIsFinished = true;
-    // Aesthetic changes
-    informationDisplay("Game Over");
-    const background = document.querySelector(".gameBoard-container");
-    background.style.backgroundColor = "#FF827E";
   };
+  const setBackgroundColorTo = (color) => {
+    const background = document.querySelector(".gameBoard-container");
+    background.style.backgroundColor = color;
+  };
+  const gameOver = (msg, color) => {
+    gameIsFinished = true;
+    // remove listener
+    removeListener();
+    // Aesthetic changes
+    informationDisplay(msg);
+    setBackgroundColorTo(color);
+  };
+  const startGame = () => {};
   return {};
 })();
