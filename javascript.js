@@ -6,6 +6,8 @@ const GameBoard = (() => {
   const cssColorVariable = {
     red: "var(--red-color)",
     yellow: "var(--yellow-color)",
+    green: "var(--green-color)",
+    white: "var(--white-color)",
   };
 
   const player1 = playerFactory("John", "X");
@@ -81,6 +83,7 @@ const GameBoard = (() => {
     // Vertical
     if (values[0] == values[3] && values[0] == values[6] && values[0] !== "") {
       console.log("win 0,3,6");
+      colorTheseCards(0, 3, 6);
       gameOver("Game Over", cssColorVariable.red);
     } else if (
       values[1] == values[4] &&
@@ -88,6 +91,7 @@ const GameBoard = (() => {
       values[1] !== ""
     ) {
       console.log("win 1,4,7");
+      colorTheseCards(1, 4, 7);
       gameOver("Game Over", cssColorVariable.red);
     } else if (
       values[2] == values[5] &&
@@ -95,12 +99,14 @@ const GameBoard = (() => {
       values[2] !== ""
     ) {
       console.log("win 2,5,8");
+      colorTheseCards(2, 5, 8);
       gameOver("Game Over", cssColorVariable.red);
     }
 
     // Horizontal
     if (values[0] == values[1] && values[0] == values[2] && values[0] !== "") {
       console.log("win 0,1,2");
+      colorTheseCards(0, 1, 2);
       gameOver("Game Over", cssColorVariable.red);
     } else if (
       values[3] == values[4] &&
@@ -108,6 +114,7 @@ const GameBoard = (() => {
       values[3] !== ""
     ) {
       console.log("win 3,4,5");
+      colorTheseCards(3, 4, 5);
       gameOver("Game Over", cssColorVariable.red);
     } else if (
       values[6] == values[7] &&
@@ -115,12 +122,14 @@ const GameBoard = (() => {
       values[6] !== ""
     ) {
       console.log("win 6,7,8");
+      colorTheseCards(6, 7, 8);
       gameOver("Game Over", cssColorVariable.red);
     }
 
     //Diagonal
     if (values[0] == values[4] && values[0] == values[8] && values[0] !== "") {
       console.log("win diag 0,4,8");
+      colorTheseCards(0, 4, 8);
       gameOver("Game Over", cssColorVariable.red);
     } else if (
       values[2] == values[4] &&
@@ -128,10 +137,19 @@ const GameBoard = (() => {
       values[2] !== ""
     ) {
       console.log("win diag 2,4,6");
+      colorTheseCards(2, 4, 6);
       gameOver("Game Over", cssColorVariable.red);
     }
   };
 
+  const colorTheseCards = (card1, card2, card3) => {
+    const cards = [card1, card2, card3];
+    for (const id of cards) {
+      const card = document.getElementById(`${id}`);
+      // card.style.color = cssColorVariable.white;
+      card.style.backgroundColor = cssColorVariable.green;
+    }
+  };
   const removeListener = () => {
     const element = document.querySelector(".grid-container");
     element.removeEventListener("click", (event) => getIdOnClick(event));
