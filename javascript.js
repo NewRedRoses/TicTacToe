@@ -20,11 +20,10 @@ const GameBoard = (() => {
   element.addEventListener("click", (event) => getIdOnClick(event));
 
   // Might delete this
-  const addNamesButton = document.getElementById("add-names-btn");
-  addNamesButton.addEventListener("click", function (e) {
+  const showModalFunction = document.getElementById("add-names-btn");
+  showModalFunction.addEventListener("click", function (e) {
     e.preventDefault();
     useCustomName = true;
-    console.log(e.target.value);
     showModal();
   });
 
