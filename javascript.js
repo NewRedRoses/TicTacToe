@@ -19,6 +19,7 @@ const GameBoard = (() => {
   const element = document.querySelector(".grid-container");
   element.addEventListener("click", (event) => getIdOnClick(event));
 
+  // Might delete this
   const addNamesButton = document.getElementById("add-names-btn");
   addNamesButton.addEventListener("click", function (e) {
     e.preventDefault();
@@ -30,7 +31,7 @@ const GameBoard = (() => {
   const resetButton = document.getElementById("reset-btn");
   resetButton.addEventListener("click", (e) => {
     window.location.reload();
-  })
+  });
 
   function playerFactory(name, marker) {
     const getMarker = () => marker;
@@ -87,6 +88,16 @@ const GameBoard = (() => {
     // console.log(turnCount);
     display();
   };
+
+  const congratulateWinner = (value) => {
+    switch (value) {
+      case player1.getMarker():
+        return informationDisplay(`${player1.getName()} wins!!`);
+      case player2.getMarker():
+        return informationDisplay(`${player2.getName()} wins!!`);
+    }
+  };
+
   const determineWinner = () => {
     /* 
     The game will determine a winner based on two conditions: 
@@ -100,6 +111,7 @@ const GameBoard = (() => {
       console.log("win 0,3,6");
       colorTheseCards(0, 3, 6);
       gameOver("Game Over", cssColorVariable.red);
+      congratulateWinner(values[0]);
     } else if (
       values[1] == values[4] &&
       values[1] == values[7] &&
@@ -108,6 +120,7 @@ const GameBoard = (() => {
       console.log("win 1,4,7");
       colorTheseCards(1, 4, 7);
       gameOver("Game Over", cssColorVariable.red);
+      congratulateWinner(values[1]);
     } else if (
       values[2] == values[5] &&
       values[2] == values[8] &&
@@ -116,6 +129,7 @@ const GameBoard = (() => {
       console.log("win 2,5,8");
       colorTheseCards(2, 5, 8);
       gameOver("Game Over", cssColorVariable.red);
+      congratulateWinner(values[2]);
     }
 
     // Horizontal
@@ -123,6 +137,7 @@ const GameBoard = (() => {
       console.log("win 0,1,2");
       colorTheseCards(0, 1, 2);
       gameOver("Game Over", cssColorVariable.red);
+      congratulateWinner(values[0]);
     } else if (
       values[3] == values[4] &&
       values[3] == values[5] &&
@@ -131,6 +146,7 @@ const GameBoard = (() => {
       console.log("win 3,4,5");
       colorTheseCards(3, 4, 5);
       gameOver("Game Over", cssColorVariable.red);
+      congratulateWinner(values[3]);
     } else if (
       values[6] == values[7] &&
       values[6] == values[8] &&
@@ -139,6 +155,7 @@ const GameBoard = (() => {
       console.log("win 6,7,8");
       colorTheseCards(6, 7, 8);
       gameOver("Game Over", cssColorVariable.red);
+      congratulateWinner(values[6]);
     }
 
     //Diagonal
@@ -146,6 +163,7 @@ const GameBoard = (() => {
       console.log("win diag 0,4,8");
       colorTheseCards(0, 4, 8);
       gameOver("Game Over", cssColorVariable.red);
+      congratulateWinner(values[0]);
     } else if (
       values[2] == values[4] &&
       values[2] == values[6] &&
@@ -154,6 +172,7 @@ const GameBoard = (() => {
       console.log("win diag 2,4,6");
       colorTheseCards(2, 4, 6);
       gameOver("Game Over", cssColorVariable.red);
+      congratulateWinner(values[2]);
     }
   };
 
@@ -181,6 +200,8 @@ const GameBoard = (() => {
     informationDisplay(msg);
     setBackgroundColorTo(color);
   };
+
+  // Might delete this
   const showModal = () => {
     const dialog = document.querySelector("dialog");
     const showButton = document.querySelector("dialog + button");
@@ -196,7 +217,5 @@ const GameBoard = (() => {
       dialog.close();
     });
   };
-  const startGame = () => { };
-  
   return {};
 })();

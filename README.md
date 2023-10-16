@@ -20,7 +20,7 @@ Below is a personal checklist derived from the instructions for the project.
 - [ ] Add additional improvements, like:
   - [ ] Allow players to put in their name.
   - [x] Include a button to start/restart the game.
-  - [ ] Create display element that congratulates the winner. 
+  - [x] Create display element that congratulates the winner. 
 - [ ] **Optional**: Basically add "AI" functionality. 
   - [ ] Add functionality to make the CPU make a random but legal move. 
   - [ ] Make the CPU player smarter (or unbeatable) by using [the minimax algorithm](https://en.wikipedia.org/wiki/Minimax). Feel free to google. 
