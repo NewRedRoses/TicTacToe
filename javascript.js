@@ -13,9 +13,19 @@ const GameBoard = (() => {
   const player1 = playerFactory("John", "X");
   const player2 = playerFactory("Luke", "O");
 
+  let useCustomName = false;
+
   //  maybe try changing it to be more specific instead of listening for the whole container
   const element = document.querySelector(".grid-container");
   element.addEventListener("click", (event) => getIdOnClick(event));
+
+  const addNamesButton = document.getElementById("add-names-btn");
+  addNamesButton.addEventListener("click", function (e) {
+    e.preventDefault();
+    useCustomName = true;
+    console.log(e.target.value);
+    showModal();
+  });
 
   function playerFactory(name, marker) {
     const getMarker = () => marker;
@@ -165,6 +175,21 @@ const GameBoard = (() => {
     // Aesthetic changes
     informationDisplay(msg);
     setBackgroundColorTo(color);
+  };
+  const showModal = () => {
+    const dialog = document.querySelector("dialog");
+    const showButton = document.querySelector("dialog + button");
+    const closeButton = document.querySelector("dialog button");
+
+    // "Show the dialog" button opens the dialog modally
+    showButton.addEventListener("click", () => {
+      dialog.showModal();
+    });
+
+    // "Close" button closes the dialog
+    closeButton.addEventListener("click", () => {
+      dialog.close();
+    });
   };
   const startGame = () => {};
   return {};

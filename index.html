@@ -11,9 +11,22 @@
     <div class="container">
       <div class="header">Tic-Tac-Toe</div>
       <div class="gameBoard-container">
-      
         <div class="gameBoard">
-            <h3 class="game-status"></h3>
+          <div class="modal-content">
+            <dialog>
+              <button autofocus>Close</button>
+              <form action="#" method="">
+                <label for="player1-name">Player 1's name'</label>
+                <input type="text" name="player1" id="player1-name" required />
+
+                <label for="player2-name">Player 2's name'</label>
+                <input type="text" name="player1" id="player2-name" required />
+                <input type="submit"/>
+              </form>
+            </dialog>
+            <button id="add-names-btn">Add user names</button>
+          </div>
+          <h3 class="game-status"></h3>
           <div class="grid-container">
             <div class="cell" id="0"></div>
             <div class="cell" id="1"></div>
