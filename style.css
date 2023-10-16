@@ -38,6 +38,7 @@ body {
   justify-content: center;
   align-items: center;
   height: 100%;
+  gap: 10px;
 }
 .game-status {
   font-weight: 800;

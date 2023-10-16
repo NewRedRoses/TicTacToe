@@ -10,8 +10,8 @@ const GameBoard = (() => {
     white: "var(--white-color)",
   };
 
-  const player1 = playerFactory("John", "X");
-  const player2 = playerFactory("Luke", "O");
+  const player1 = playerFactory("Player 1", "X");
+  const player2 = playerFactory("Player 2", "O");
 
   let useCustomName = false;
 
@@ -26,6 +26,11 @@ const GameBoard = (() => {
     console.log(e.target.value);
     showModal();
   });
+
+  const resetButton = document.getElementById("reset-btn");
+  resetButton.addEventListener("click", (e) => {
+    window.location.reload();
+  })
 
   function playerFactory(name, marker) {
     const getMarker = () => marker;
@@ -191,6 +196,7 @@ const GameBoard = (() => {
       dialog.close();
     });
   };
-  const startGame = () => {};
+  const startGame = () => { };
+  
   return {};
 })();
