@@ -52,7 +52,6 @@ body {
   display: flex;
   position: relative;
   background-color: var(--white-color);
-  /* border: 1px solid black; */
   justify-content: center;
   align-items: center;
   height: 100px;
@@ -71,4 +70,17 @@ form{
   display: flex;
   flex-direction: column;
   gap: 10px;
+}
+button {
+  background-color: E3E3E3;
+  position: relative;
+  font-weight: 700;
+  color: var(--black-color);
+  /* width: 25px; */
+  height: 25px;
+  border-radius: 5%;
+  border: 0;
+}
+button:active{
+  top:2px;
 }

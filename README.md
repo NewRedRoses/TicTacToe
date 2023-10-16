@@ -17,8 +17,8 @@ Below is a personal checklist derived from the instructions for the project.
 - [x] Add logic so no two players can pick the same spot. 
 - [x] Create logic that determine if the game is over.
 - [x] The game is over when there are 3 checks of the same value or if there's a tie.
-- [ ] Add additional improvements, like:
-  - [ ] Allow players to put in their name.
+- [x] Add additional improvements, like:
+  - [ ] Allow players to put in their name. (eeeeee might do some day)
   - [x] Include a button to start/restart the game.
   - [x] Create display element that congratulates the winner. 
 - [ ] **Optional**: Basically add "AI" functionality. 
